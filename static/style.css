@@ -1,0 +1,225 @@
+:root {
+  --navy: #0f1b3d;
+  --navy-light: #1e2f5c;
+  --accent: #10b981;
+  --accent-dark: #059669;
+  --danger: #ef4444;
+  --bg: #f4f6fb;
+  --card: #ffffff;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.topbar {
+  background: var(--navy);
+  color: #fff;
+  padding: 24px 40px;
+  text-align: center;
+}
+
+.logo {
+  font-family: 'Poppins', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.logo span { color: var(--accent); }
+
+.tagline {
+  color: #b8c2dd;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 4px 20px rgba(15, 27, 61, 0.08);
+}
+
+.form-card h2 {
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 20px;
+  color: var(--navy);
+}
+
+.section-title {
+  font-size: 15px;
+  color: var(--muted);
+  margin: 16px 0 10px;
+  font-weight: 600;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.field {
+  margin-bottom: 14px;
+}
+
+.field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.field input, .field select {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  background: #fbfcfe;
+  transition: border-color 0.2s;
+}
+
+.field input:focus, .field select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.field input[type="range"] {
+  padding: 0;
+  accent-color: var(--accent);
+}
+
+.predict-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  background: var(--navy);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.predict-btn:hover {
+  background: var(--navy-light);
+  transform: translateY(-1px);
+}
+
+/* RESULT CARD */
+.result-card {
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.state-box {
+  text-align: center;
+  width: 100%;
+}
+
+.hidden { display: none; }
+
+.placeholder-icon { font-size: 48px; margin-bottom: 14px; }
+
+.state-box p { color: var(--muted); font-size: 14px; line-height: 1.5; }
+
+/* Spinner */
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--border);
+  border-top: 4px solid var(--accent);
+  border-radius: 50%;
+  margin: 0 auto 18px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Result */
+.result-icon {
+  font-size: 56px;
+  margin-bottom: 10px;
+  animation: pop 0.4s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.4); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+#resultTitle {
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 18px;
+}
+
+.approved #resultTitle { color: var(--accent-dark); }
+.rejected #resultTitle { color: var(--danger); }
+
+.probability-wrap { margin-bottom: 22px; }
+
+.prob-bar-bg {
+  width: 100%;
+  height: 10px;
+  background: var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.prob-bar-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 10px;
+  transition: width 0.8s ease;
+}
+
+.approved .prob-bar-fill { background: var(--accent); }
+.rejected .prob-bar-fill { background: var(--danger); }
+
+.reset-btn {
+  padding: 10px 22px;
+  border: 1.5px solid var(--navy);
+  background: transparent;
+  color: var(--navy);
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.reset-btn:hover { background: var(--navy); color: #fff; }
+
+.error-text { color: var(--danger); margin-bottom: 16px; }
+
+/* Responsive */
+@media (max-width: 800px) {
+  .container { grid-template-columns: 1fr; }
+  .grid-2 { grid-template-columns: 1fr; }
+}

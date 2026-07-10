@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Lender - AI Loan Approval</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="logo">💰 Smart<span>Lender</span></div>
+    <p class="tagline">AI Powered Loan Approval Prediction</p>
+  </header>
+
+  <main class="container">
+
+    <!-- FORM CARD -->
+    <section class="card form-card">
+      <h2>Applicant Details</h2>
+
+      <form id="loanForm">
+
+        <div class="grid-2">
+          <div class="field">
+            <label>Education</label>
+            <select id="education" required>
+              <option value="0">Graduate</option>
+              <option value="1">Not Graduate</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Self Employed</label>
+            <select id="self_employed" required>
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label>No. of Dependents</label>
+            <input type="number" id="dependents" min="0" max="10" value="0" required>
+          </div>
+
+          <div class="field">
+            <label>Loan Term (Months)</label>
+            <input type="number" id="loan_term" min="1" placeholder="e.g. 360" required>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label>Annual Income (₹)</label>
+            <input type="number" id="income" min="0" placeholder="e.g. 500000" required>
+          </div>
+
+          <div class="field">
+            <label>Loan Amount (₹)</label>
+            <input type="number" id="loan_amount" min="0" placeholder="e.g. 1000000" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>CIBIL Score: <span id="cibilValue">650</span></label>
+          <input type="range" id="cibil_score" min="300" max="900" value="650">
+        </div>
+
+        <h3 class="section-title">Asset Values (₹)</h3>
+
+        <div class="grid-2">
+          <div class="field">
+            <label>Residential Assets</label>
+            <input type="number" id="residential_assets" min="0" placeholder="0" required>
+          </div>
+
+          <div class="field">
+            <label>Commercial Assets</label>
+            <input type="number" id="commercial_assets" min="0" placeholder="0" required>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label>Luxury Assets</label>
+            <input type="number" id="luxury_assets" min="0" placeholder="0" required>
+          </div>
+
+          <div class="field">
+            <label>Liquid Bank Assets</label>
+            <input type="number" id="bank_assets" min="0" placeholder="0" required>
+          </div>
+        </div>
+
+        <button type="submit" class="predict-btn">Predict Approval</button>
+      </form>
+    </section>
+
+    <!-- RESULT CARD -->
+    <section class="card result-card">
+      <div id="placeholderState" class="state-box">
+        <div class="placeholder-icon">🏦</div>
+        <p>Fill the form and click <b>Predict Approval</b> to see your loan result here.</p>
+      </div>
+
+      <div id="loadingState" class="state-box hidden">
+        <div class="spinner"></div>
+        <p>Analyzing your application...</p>
+      </div>
+
+      <div id="resultState" class="state-box hidden">
+        <div id="resultIcon" class="result-icon"></div>
+        <h2 id="resultTitle"></h2>
+        <div class="probability-wrap">
+          <div class="prob-bar-bg">
+            <div id="probBarFill" class="prob-bar-fill"></div>
+          </div>
+          <p><span id="probValue"></span>% Approval Probability</p>
+        </div>
+        <button class="reset-btn" onclick="resetForm()">Check Another Application</button>
+      </div>
+
+      <div id="errorState" class="state-box hidden">
+        <div class="result-icon">⚠️</div>
+        <h2>Something Went Wrong</h2>
+        <p id="errorMsg" class="error-text"></p>
+        <button class="reset-btn" onclick="resetForm()">Try Again</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
