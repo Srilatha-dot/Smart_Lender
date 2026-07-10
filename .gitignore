@@ -1,5 +1,27 @@
+# Python
 __pycache__/
 *.pyc
-.env
+*.pyo
+
+# Virtual environment
 venv/
+env/
+.venv/
+
+# Environment variables / secrets
+.env
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# IDE / Editor files
 .vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Flask
+instance/
+*.log
