@@ -110,6 +110,22 @@ body {
   accent-color: var(--accent);
 }
 
+.helper-text {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.helper-text a {
+  color: var(--accent-dark);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.helper-text a:hover {
+  text-decoration: underline;
+}
+
 .predict-btn {
   width: 100%;
   padding: 14px;

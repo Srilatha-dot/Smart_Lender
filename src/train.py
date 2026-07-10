@@ -11,7 +11,7 @@ import joblib
 
 def run_training_pipeline():
     print("Step 1: Loading loan application dataset...")
-    df = pd.read_csv('data/loan_approval_dataset.csv')
+    df = pd.read_csv('/data/loan_approval_dataset.csv')
 
     print("Step 2: Cleaning whitespace columns and values...")
     # Strip spaces from columns and text records
